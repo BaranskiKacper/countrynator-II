@@ -1,6 +1,6 @@
 class DecisionNode:
     # A Decision Node asks a question.
-
+    # This holds a reference to the question, and to the two child nodes.
     def __init__(self,
                  question,
                  true_branch,

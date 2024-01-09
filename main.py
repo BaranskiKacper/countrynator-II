@@ -2,7 +2,6 @@ from Tree import *
 from utils import *
 from probability import *
 
-
 def main():
     categories = create_categories()
     countries_answers, countries = load_data()
@@ -76,7 +75,7 @@ def main():
 if __name__ == "__main__":
     while True:
         main()
-        print('Czy chcesz zaczac nowa gre?')
+        print('Do you want to start a new game?')
 
         while True:
             new_game = input()

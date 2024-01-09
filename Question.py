@@ -17,4 +17,4 @@ class Question:
             return val == self.value
 
     def __repr__(self):
-        return "Czy " + self.headers[self.column] + "?"
+        return "Whether " + self.headers[self.column] + "?"

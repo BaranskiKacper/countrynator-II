@@ -19,7 +19,7 @@ def load_headers():
     headers = []
     list_of_column_names = []
     rows_to_skip = 2
-    with open('baza.csv') as csv_file:
+    with open('base.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
 
         for row in csv_reader:
@@ -39,7 +39,7 @@ def create_categories():
     categories = {}
     categories_tmp = {}
     list_of_column_names = []
-    with open('baza.csv') as csv_file:
+    with open('base.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
 
         for row in csv_reader:
@@ -68,7 +68,7 @@ def create_possible_questions():
     questions = {}
     key = 0
     for header in headers:
-        questions[str(key)] = "Czy " + header + "?"
+        questions[str(key)] = "Whether " + header + "?"
         key += 1
     return questions
 
@@ -77,7 +77,7 @@ def load_data():
     """Loading data from .csv file."""
     data = []
     rows_to_skip = 2
-    with open('baza.csv') as file_obj:
+    with open('base.csv') as file_obj:
         reader_obj = csv.reader(file_obj)
         for row in reader_obj:
             if rows_to_skip > 0:
@@ -216,7 +216,7 @@ def confirm_answer(result, answers_so_far, questions_so_far, questions_number, c
                    countries_in_db):
     i = 0
     while True:
-        print('Czy myslales o tym kraju?')
+        print('Did you think about this country?')
         print(result[i]['name'])  # country that has best probabilities
         max_probability = result[0]['probability']
 
@@ -248,7 +248,7 @@ def confirm_answer(result, answers_so_far, questions_so_far, questions_number, c
 
 
 def add_new_country(user_answers, questions, questions_number, countries):
-    print('Podaj nazwe kraju, ktory wybrales')
+    print('What country did you think about?')
     country_name = input()
 
     if not is_country_in_base(country_name, countries):
@@ -259,7 +259,7 @@ def add_new_country(user_answers, questions, questions_number, countries):
             question_no = int(questions[i])
             country_answers[question_no] = user_answers[i]
 
-        with open("baza.csv", "a") as file:
+        with open("base.csv", "a") as file:
             for answer in country_answers:
                 file.write(str(answer) + ",")
             file.write(country_name)
@@ -293,7 +293,7 @@ def update_country(countries_answers, user_answers, questions, country_name):
         i += 1
 
     text = ""
-    with open('baza.csv') as csv_file:
+    with open('base.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter='\n')
 
         for line in csv_reader:
@@ -304,7 +304,7 @@ def update_country(countries_answers, user_answers, questions, country_name):
                 text += line[0]
             text += "\n"
 
-    with open('baza.csv', 'w') as csv_file_writer:
+    with open('base.csv', 'w') as csv_file_writer:
         csv_file_writer.write(text)
 
 
